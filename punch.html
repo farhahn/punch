@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gram Panchayat Examplevila</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      width: 100%;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #F5F5DC 0%, #D3D3C5 100%);
+      animation: bgMotion 15s infinite alternate;
+      position: relative;
+    }
+    @keyframes bgMotion {
+      0% { background: linear-gradient(135deg, #F5F5DC 0%, #D3D3C5 100%); }
+      50% { background: linear-gradient(135deg, #D3D3C5 0%, #E0E0D1 100%); }
+      100% { background: linear-gradient(135deg, #E0E0D1 0%, #C9C7B6 100%); }
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(139, 69, 19, 0.01) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    header {
+      position: relative;
+      background: url('https://cdndailyexcelsior.b-cdn.net/wp-content/uploads/2024/10/PANCHAYAT-BHAWAN.jpg') no-repeat center center/cover;
+      color: #5C4033;
+      text-align: center;
+      padding: 6rem 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 25px rgba(92, 64, 51, 0.25);
+      overflow: hidden;
+      position: relative;
+    }
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
+    .flag {
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 200px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200"><rect width="100" height="40" fill="#FF9933"/><rect y="40" width="100" height="40" fill="#fff"/><rect y="80" width="100" height="40" fill="#138808"/><circle cx="50" cy="100" r="15" fill="#000"><animateTransform attributeName="transform" type="rotate" from="0 50 100" to="360 50 100" dur="2s" repeatCount="indefinite"/></circle></svg>') no-repeat center;
+      background-size: contain;
+      z-index: 2;
+    }
+    .flag.left {
+      left: 20px;
+    }
+    .flag.right {
+      right: 20px;
+      transform: scaleX(-1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      text-shadow: 4px 4px 8px rgba(245, 245, 220, 0.5);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 8px #F5F5DC, 0 0 15px #8B4513; }
+      to { text-shadow: 0 0 15px #F5F5DC, 0 0 25px #DAA520; }
+    }
+    header p {
+      margin: 1.2rem 0 0;
+      font-size: 1.8rem;
+      font-style: italic;
+      text-shadow: 2px 2px 5px rgba(245, 245, 220, 0.4);
+    }
+    section {
+      padding: 3.5rem 2rem;
+      margin-bottom: 3.5rem;
+      width: 100%;
+      transition: transform 0.6s ease;
+    }
+    #about, #news, #contact, #members {
+      background: rgba(245, 245, 220, 0.95);
+      backdrop-filter: blur(8px);
+      border-radius: 30px;
+      box-shadow: 0 12px 50px rgba(92, 64, 51, 0.15);
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 3.5rem;
+      border: 2px solid rgba(245, 245, 220, 0.3);
+    }
+    h2 {
+      font-size: 3.5rem;
+      margin-bottom: 2.5rem;
+      color: #8B4513;
+      font-weight: 800;
+      position: relative;
+      display: inline-block;
+    }
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -1rem;
+      left: 0;
+      width: 70%;
+      height: 6px;
+      background: linear-gradient(90deg, #8B4513, #DAA520, #6B8E23);
+      border-radius: 4px;
+      animation: gradientFlow 4s infinite alternate;
+    }
+    @keyframes gradientFlow {
+      0% { background: linear-gradient(90deg, #8B4513, #DAA520, #6B8E23); }
+      50% { background: linear-gradient(90deg, #DAA520, #6B8E23, #9ACD32); }
+      100% { background: linear-gradient(90deg, #6B8E23, #9ACD32, #8B4513); }
+    }
+    p {
+      font-size: 1.3rem;
+      line-height: 2.2;
+      color: #5C4033;
+      text-align: justify;
+    }
+    #gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(92, 64, 51, 0.2);
+      transition: transform 0.6s ease, box-shadow 0.6s ease, filter 0.6s ease;
+      cursor: pointer;
+      object-fit: cover;
+    }
+    #gallery img:hover {
+      transform: scale(1.12) rotate(3deg);
+      box-shadow: 0 25px 60px rgba(139, 69, 19, 0.4);
+      filter: brightness(1.4) contrast(1.2);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 3rem;
+      margin-top: 2.5rem;
+    }
+    .news-container {
+      display: flex;
+      flex-direction: row;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .news-item {
+      background: linear-gradient(135deg, rgba(245, 245, 220, 0.98), rgba(211, 211, 197, 0.98));
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(92, 64, 51, 0.2);
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+      flex: 1 1 45%;
+      position: relative;
+      overflow: hidden;
+    }
+    .news-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(139, 69, 19, 0.15), transparent);
+      animation: shine 3.5s infinite;
+    }
+    @keyframes shine {
+      0% { left: -100%; }
+      20% { left: 100%; }
+      100% { left: 100%; }
+    }
+    .news-item:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 60px rgba(139, 69, 19, 0.4);
+    }
+    .news-item h3 {
+      margin: 0 0 1rem;
+      font-size: 2.2rem;
+      color: #DAA520;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .news-item p.date {
+      color: #6B8E23;
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      font-style: italic;
+    }
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 1rem;
+      background: linear-gradient(135deg, rgba(245, 245, 220, 0.98), rgba(211, 211, 197, 0.98));
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(92, 64, 51, 0.2);
+      overflow: hidden;
+    }
+    th {
+      padding: 2rem;
+      text-align: left;
+      font-weight: 800;
+      color: #8B4513;
+      background: linear-gradient(90deg, #F5F5DC, #E0E0D1);
+      border-bottom: 5px solid #D3D3C5;
+    }
+    td {
+      padding: 1.8rem;
+      color: #5C4033;
+      border-bottom: 2px solid #E0E0D1;
+      transition: background-color 0.4s, transform 0.4s;
+    }
+    tr:hover td {
+      background-color: #E0E0D1;
+      transform: scale(1.02);
+    }
+    #social ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    #social a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.6rem;
+      padding: 1.5rem 3rem;
+      background: linear-gradient(90deg, #8B4513, #DAA520, #6B8E23);
+      border-radius: 60px;
+      box-shadow: 0 10px 25px rgba(92, 64, 51, 0.25);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    #social a:hover {
+      transform: scale(1.18);
+      box-shadow: 0 20px 50px rgba(139, 69, 19, 0.5);
+    }
+    #social i {
+      font-size: 1.9rem;
+    }
+    footer {
+      background: linear-gradient(90deg, #8B4513 0%, #5C4033 100%);
+      color: #F5F5DC;
+      text-align: center;
+      padding: 3.5rem;
+      width: 100%;
+      box-shadow: 0 -10px 30px rgba(92, 64, 51, 0.25);
+      position: relative;
+    }
+    footer::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #8B4513, #DAA520);
+      animation: footerGlow 3.5s infinite alternate;
+    }
+    @keyframes footerGlow {
+      from { opacity: 0.6; }
+      to { opacity: 1; }
+    }
+    footer p {
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(92, 64, 51, 0.3);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      header {
+        padding: 5rem 1.5rem;
+      }
+      header h1 {
+        font-size: 4rem;
+      }
+      .flag {
+        width: 80px;
+        height: 160px;
+      }
+      section {
+        padding: 3rem 1.5rem;
+      }
+      h2 {
+        font-size: 3rem;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+      .news-item {
+        flex: 1 1 48%;
+      }
+    }
+    @media (max-width: 768px) {
+      header {
+        padding: 3.5rem 1rem;
+      }
+      header h1 {
+        font-size: 2.8rem;
+      }
+      header p {
+        font-size: 1.4rem;
+      }
+      .flag {
+        display: none; /* Hide flags on small screens to avoid clutter */
+      }
+      section {
+        padding: 2.5rem 1rem;
+      }
+      h2 {
+        font-size: 2.2rem;
+      }
+      p {
+        font-size: 1.1rem;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .news-container {
+        flex-direction: column;
+      }
+      .news-item {
+        flex: 1 1 100%;
+      }
+      #social a {
+        padding: 1.2rem 2.5rem;
+        font-size: 1.3rem;
+      }
+      footer {
+        padding: 2.5rem;
+      }
+      footer p {
+        font-size: 1.2rem;
+      }
+    }
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2.3rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+      #social a {
+        padding: 0.9rem 2rem;
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="flag left"></div>
+    <div class="flag right"></div>
+    <h1>Gram Panchayat Ajaad Bharat</h1>
+    <p>Welcome to the official website of Gram Panchayat </p>
+  </header>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Gram Panchayat Examplevila is a vibrant rural community located in the heart of India. 
+      Established in 1950, our panchayat serves over 2,000 residents, focusing on sustainable 
+      development, education, health, and agriculture. We strive to empower our villagers through 
+      various government schemes and community initiatives, ensuring inclusive growth and prosperity 
+      for all.</p>
+  </section>
+
+  <section id="gallery">
+    <h2>Photo Gallery</h2>
+    <div class="gallery-grid">
+      <img src="https://idronline.org/wp-content/uploads/2025/08/feature-image-7.webp" alt="Village Scene 1" loading="lazy">
+      <img src="https://idronline.org/wp-content/uploads/2025/05/Gram-Sabha.webp" alt="Village Scene 2" loading="lazy">
+      <img src="https://idronline.org/wp-content/uploads/2023/11/women-sitting-in-circle.jpg.webp" alt="Village Scene 3" loading="lazy">
+      <img src="https://idronline.org/wp-content/uploads/2025/07/gram-panchayat.webp" alt="Village Scene 4" loading="lazy">
+      <img src="https://www.mohanfoundation.org/images/activity_slideshow/8955-Villagers%20pledging.JPG" alt="Village Scene 5" loading="lazy">
+    </div>
+  </section>
+
+  <section id="news">
+    <h2>News/Updates</h2>
+    <div class="news-container">
+      <div class="news-item">
+        <h3>New Water Supply Project Launched</h3>
+        <p class="date">Date: August 15, 2025</p>
+        <p>We are excited to announce the launch of a new water supply project that will provide 
+          clean drinking water to all households in Examplevila. This initiative is funded by the 
+          state government and aims to improve health and hygiene in our community.</p>
+      </div>
+      <div class="news-item">
+        <h3>Community Health Camp Organized</h3>
+        <p class="date">Date: July 20, 2025</p>
+        <p>A free health camp was organized in collaboration with local NGOs, where over 500 
+          villagers received medical check-ups and vaccinations. We thank all participants and 
+          volunteers for making it a success.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="members">
+    <h2>Panchayat Members</h2>
+    <div style="overflow-x: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Contact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rajesh Kumar</td>
+            <td>Sarpanch</td>
+            <td>rajesh@example.com</td>
+          </tr>
+          <tr>
+            <td>Meena Devi</td>
+            <td>Up-Sarpanch</td>
+            <td>meena@example.com</td>
+          </tr>
+          <tr>
+            <td>Amit Singh</td>
+            <td>Member</td>
+            <td>amit@example.com</td>
+          </tr>
+          <tr>
+            <td>Priya Sharma</td>
+            <td>Member</td>
+            <td>priya@example.com</td>
+          </tr>
+          <tr>
+            <td>Vikram Patel</td>
+            <td>Member</td>
+            <td>vikram@example.com</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Details</h2>
+    <p>Address: Gram Panchayat Office, Examplevila, District XYZ, State ABC, India - 123456</p>
+    <p>Phone: +91-1234567890</p>
+    <p>Email: info@examplevila.gov.in</p>
+  </section>
+
+  <section id="social">
+    <h2>Social Media Links</h2>
+    <ul>
+      <li><a href="https://facebook.com/examplevila" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+      <li><a href="https://twitter.com/examplevila" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+      <li><a href="https://instagram.com/examplevila" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+      <li><a href="https://youtube.com/examplevila" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Gram Panchayat Examplevila. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const year = new Date().getFullYear();
+      document.querySelector('footer p').innerHTML = `&copy; ${year} Gram Panchayat Examplevila. All rights reserved.`;
+
+      const flags = document.querySelectorAll('.flag');
+      let scrollPositions = [0, 0];
+      const speed = 1; // Adjust speed of scroll (pixels per frame)
+      const resetPosition = -200; // Height of flag to reset
+
+      function animateFlags() {
+        flags.forEach((flag, index) => {
+          scrollPositions[index] += speed;
+          flag.style.top = `${scrollPositions[index]}px`;
+
+          // Reset flag position when it moves out of view
+          if (scrollPositions[index] > window.innerHeight) {
+            scrollPositions[index] = resetPosition;
+          }
+        });
+        requestAnimationFrame(animateFlags);
+      }
+
+      // Start animation
+      animateFlags();
+
+      // Handle window resize to maintain flag positioning
+      window.addEventListener('resize', () => {
+        flags.forEach(flag => {
+          flag.style.top = '0px'; // Reset on resize
+        });
+        scrollPositions = [0, 0];
+      });
+    });
+  </script>
+</body>
+</html>
